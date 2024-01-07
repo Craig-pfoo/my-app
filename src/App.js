@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Store from "./components/store";
-import Cart from "./components/common/cart";
+import Cart from "./components/cart";
 import NavBar from "./components/common/navBar";
 
 class Apps extends Component {

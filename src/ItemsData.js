@@ -50,3 +50,19 @@ export function getProducts() {
   console.log(products);
   return products;
 }
+
+export function saveProducts(product) {
+  let productsInDb = product.find((p) => p.id === product.id) || {};
+  productsInDb.name = product.name;
+  productsInDb.description = product.description;
+  productsInDb.price = product.price;
+  productsInDb.quantity = product.price;
+  productsInDb.image = product.image;
+
+  if (!productsInDb) {
+    productsInDb.id = Date.now();
+    products.push(productsInDb);
+  }
+  console.log(productsInDb);
+  return productsInDb;
+}

@@ -19,7 +19,7 @@ class Store extends Component {
   componentDidMount() {
     const products = [{ id: "", name: "All Products" }, ...getProducts()];
 
-    this.setState({ products, cartItems: [] });
+    this.setState({ products });
   }
 
   handlePageChange = (page) => {
@@ -48,6 +48,14 @@ class Store extends Component {
         cartItems: [...cartItems, { ...selectedProduct, quantity: 1 }],
       });
     }
+    console.log("Items added to cart", this.state.cartItems);
+  };
+
+  handleSubmitCheckout = () => {
+    this.props.history.push({
+      to: "/cart",
+      state: { cartItems: this.state.cartItems },
+    });
   };
 
   handleSort = (sortColumn) => {
@@ -107,7 +115,11 @@ class Store extends Component {
             currentPage={currentPage}
             onPageChange={this.handlePageChange}
           />
-          <Link to="/cart" className="btn btn-success">
+          <Link
+            to="/cart"
+            className="btn btn-success"
+            onClick={this.handleSubmitCheckout}
+          >
             Checkout ({cartItems.length})
           </Link>
         </div>
